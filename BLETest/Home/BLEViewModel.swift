@@ -8,8 +8,6 @@ final class BLEViewModel: NSObject, ObservableObject {
     @Published var processingDevice: Device?
     @Published var connectedDevice: Device?
     
-    private var reconnectAttempts: Int = 0
-    private let maxReconnectAttempts = 3
     private var targetDevice: Device?
     
     var devicesToShow: [Device] { Array(devices) }
@@ -46,9 +44,7 @@ final class BLEViewModel: NSObject, ObservableObject {
     
     private func attemptReconnection() {
         guard let centralManager,
-                let targetDevice,
-                reconnectAttempts < maxReconnectAttempts else { return }
-        reconnectAttempts += 1
+                let targetDevice else { return }
         centralManager.connect(targetDevice.peripheral, options: nil)
     }
 }
@@ -68,7 +64,6 @@ extension BLEViewModel: CBCentralManagerDelegate {
         processingDevice = nil
         let newConnection = Device(peripheral: peripheral)
         connectedDevice = newConnection
-        reconnectAttempts = 0
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: (any Error)?) {

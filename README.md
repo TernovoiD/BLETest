@@ -22,6 +22,9 @@
 * The app will maintain the connection in the background and attempt to reconnect automatically if disconnected.
 * When Bluetooth is turned on and the app is in the background, it will attempt to reconnect to the last used device.
 
+# Video
+https://streamable.com/8q26rf
+
 # Screenshots
 ![IMG_7686](https://github.com/user-attachments/assets/1a7e0cbc-26df-4cbf-beae-e06e247211d1)
 ![IMG_7687](https://github.com/user-attachments/assets/f34dba65-4a5c-4818-ad64-f86223f1339d)
